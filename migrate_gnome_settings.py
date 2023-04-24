@@ -45,7 +45,7 @@ def export_settings():
             tar.add(GNOME_BGS_DIR, arcname=REL_GNOME_BGS_DIR)
 
 
-        print('>>>> Exporting dconfs...')
+        print('>>>> Exporting dconf extension settings...')
         tar.add(DCONF_SETTINGS_FILENAME, arcname='dconf-extensions-settings.dump')
 
     subprocess.run(['rm', DCONF_SETTINGS_FILENAME], check=False)
@@ -58,7 +58,7 @@ def import_settings():
         print('>>>> Unpacking static files...')
         subprocess.run(['tar', '-xzf', TAR_FILENAME, '-C', os.path.expanduser('~')], check=True)
 
-        print('>>>> Importing dconfs...\n')
+        print('>>>> Importing dconf extension settings...\n')
         dconf_settings = open(DCONF_SETTINGS_FILENAME, 'rb').read()
         subprocess.run(
             ['dconf', 'load', '-f', '/'],
