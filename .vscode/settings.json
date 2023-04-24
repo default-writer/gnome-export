@@ -1,7 +1,5 @@
 {
-    "cSpell.words": [
-        "arcname",
-        "DCONF",
-        "dconfs"
+    "cSpell.files": [
+        "*.py"
     ]
 }
