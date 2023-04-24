@@ -54,19 +54,22 @@ def export_settings():
 def import_settings():
     print('>>>> Starting to import settings...')
 
-    print('>>>> Unpacking static files...')
-    subprocess.run(['tar', '-xzf', TAR_FILENAME, '-C', os.path.expanduser('~')], check=True)
+    if os.path.exists(TAR_FILENAME):
+        print('>>>> Unpacking static files...')
+        subprocess.run(['tar', '-xzf', TAR_FILENAME, '-C', os.path.expanduser('~')], check=True)
 
-    print('>>>> Importing dconfs...\n')
-    dconf_settings = open(DCONF_SETTINGS_FILENAME, 'rb').read()
-    subprocess.run(
-        ['dconf', 'load', '-f', '/'],
-        input=dconf_settings.replace(b'%%USER%%', getpass.getuser().encode('utf8')),
-        check=False
-    )
+        print('>>>> Importing dconfs...\n')
+        dconf_settings = open(DCONF_SETTINGS_FILENAME, 'rb').read()
+        subprocess.run(
+            ['dconf', 'load', '-f', '/'],
+            input=dconf_settings.replace(b'%%USER%%', getpass.getuser().encode('utf8')),
+            check=False
+        )
 
-    subprocess.run(['rm', DCONF_SETTINGS_FILENAME], check=False)
-    print('\n>>>> Done! You may need to restart your Gnome session for settings to load (logout and login).')
+        subprocess.run(['rm', DCONF_SETTINGS_FILENAME], check=False)
+        print('\n>>>> Done! You may need to restart your Gnome session for settings to load (logout and login).')
+    else:
+        print('>>>> Please copy file to destination location first: %s\n' % TAR_FILENAME)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
