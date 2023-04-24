@@ -1,2 +1,2 @@
 #!/bin/bash -e
-python3 migrate_gnome_settings.py --export-settings --firefox-settings
+python3 migrate_gnome_settings.py --export-settings

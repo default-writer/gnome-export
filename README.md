@@ -1,4 +1,5 @@
 # gnome-export
+
 python scripting for gnome export/import
 
 ## migrate_gnome_settings.py
@@ -16,7 +17,6 @@ For now, the script migrates:
     wallpapers;
     extensions;
     keybindings;
-    firefox settings;
     most app settings.
 
 Note: if you choose to export firefox settings, DO NOT share your configuration with anyone, since it WILL contain private data.
