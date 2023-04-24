@@ -16,8 +16,8 @@ GNOME_BGS_DIR = os.path.expanduser('~') + REL_GNOME_BGS_DIR
 GNOME_ICONS_DIR = os.path.expanduser('~') + REL_GNOME_ICONS_DIR
 GNOME_THEMES_DIR = os.path.expanduser('~') + REL_GNOME_THEMES_DIR
 
-DCONF_SETTINGS_FILENAME = os.path.expanduser('~') + '/dconf-extensions-settings.dump'
-TAR_FILENAME = os.path.expanduser('~') + '/gnome_settings.tar.gz'
+DCONF_SETTINGS_FILENAME = os.path.join(os.getcwd(), 'dconf-extensions-settings.dump')
+TAR_FILENAME = os.path.join(os.getcwd(), 'gnome_settings.tar.gz')
 
 
 def export_settings():
