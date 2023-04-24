@@ -9,7 +9,6 @@ REL_GNOME_EXTENSIONS_DIR = '/.local/share/gnome-shell/extensions/'
 REL_GNOME_BGS_DIR = '/.local/share/backgrounds/'
 REL_GNOME_ICONS_DIR = '/.icons/'
 REL_GNOME_THEMES_DIR = '/.themes/'
-REL_FIREFOX_SETTINGS_DIR = '/.mozilla/'
 
 GNOME_EXTENSIONS_DIR = os.path.expanduser('~') + REL_GNOME_EXTENSIONS_DIR
 GNOME_BGS_DIR = os.path.expanduser('~') + REL_GNOME_BGS_DIR
