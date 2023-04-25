@@ -9,13 +9,14 @@ REL_GNOME_EXTENSIONS_DIR = '/.local/share/gnome-shell/extensions/'
 REL_GNOME_BGS_DIR = '/.local/share/backgrounds/'
 REL_GNOME_ICONS_DIR = '/.icons/'
 REL_GNOME_THEMES_DIR = '/.themes/'
+REL_FIREFOX_SETTINGS_DIR = '/.mozilla/'
 
 GNOME_EXTENSIONS_DIR = os.path.expanduser('~') + REL_GNOME_EXTENSIONS_DIR
 GNOME_BGS_DIR = os.path.expanduser('~') + REL_GNOME_BGS_DIR
 GNOME_ICONS_DIR = os.path.expanduser('~') + REL_GNOME_ICONS_DIR
 GNOME_THEMES_DIR = os.path.expanduser('~') + REL_GNOME_THEMES_DIR
 
-DCONF_SETTINGS_FILENAME = os.path.join(os.getcwd(), 'dconf-extensions-settings.dump')
+DCONF_SETTINGS_FILENAME = os.path.join(os.path.expanduser('~'), 'dconf-extensions-settings.dump')
 TAR_FILENAME = os.path.join(os.getcwd(), 'gnome_settings.tar.gz')
 
 
@@ -57,7 +58,7 @@ def import_settings():
         print('>>>> Unpacking static files...')
         subprocess.run(['tar', '-xzf', TAR_FILENAME, '-C', os.path.expanduser('~')], check=True)
 
-        print('>>>> Importing dconf extension settings...\n')
+        print('>>>> Importing dconf extension settings...')
         dconf_settings = open(DCONF_SETTINGS_FILENAME, 'rb').read()
         subprocess.run(
             ['dconf', 'load', '-f', '/'],
@@ -66,7 +67,7 @@ def import_settings():
         )
 
         subprocess.run(['rm', DCONF_SETTINGS_FILENAME], check=False)
-        print('\n>>>> Done! You may need to restart your Gnome session for settings to load (logout and login).')
+        print('>>>> Done! You may need to restart your Gnome session for settings to load (logout and login).')
     else:
         print('>>>> Please copy file to destination location first: %s\n' % TAR_FILENAME)
 
